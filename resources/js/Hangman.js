@@ -11,15 +11,15 @@ class Hangman {
   /**
    * This function takes a difficulty string as a patameter
    * would use the Fetch API to get a random word from the Hangman
-   * To get an easy word: https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=easy
-   * To get an medium word: https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=medium
-   * To get an hard word: https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=hard
+   * To get an easy word: https://it3049c-hangman.fly.dev?difficulty=easy
+   * To get an medium word: https://it3049c-hangman.fly.dev?difficulty=medium
+   * To get an hard word: https://it3049c-hangman.fly.dev?difficulty=hard
    * The results is a json object that looks like this:
    *    { word: "book" }
    * */
   getRandomWord(difficulty) {
     return fetch(
-      `https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=${difficulty}`
+      `https://it3049c-hangman.fly.dev?difficulty=${difficulty}`
     )
       .then((r) => r.json())
       .then((r) => r.word);
