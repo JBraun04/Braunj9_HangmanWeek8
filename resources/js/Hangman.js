@@ -9,7 +9,7 @@ class Hangman {
   }
 
   /**
-   * This function takes a difficulty string as a patameter
+   * This function takes a difficulty string as a parameter
    * would use the Fetch API to get a random word from the Hangman
    * To get an easy word: https://it3049c-hangman.fly.dev?difficulty=easy
    * To get an medium word: https://it3049c-hangman.fly.dev?difficulty=medium
@@ -28,7 +28,7 @@ class Hangman {
   /**
    *
    * @param {string} difficulty a difficulty string to be passed to the getRandomWord Function
-   * @param {function} next callback function to be called after a word is reveived from the API.
+   * @param {function} next callback function to be called after a word is received from the API.
    */
   start(difficulty, next) {
     // get word and set it to the class's this.word
@@ -69,7 +69,7 @@ class Hangman {
 
   /**
    * This function will return a string of the word placeholder
-   * It will have underscores in the correct number and places of the unguessed letters.
+   * It will have underscores in the correct number and places of the un-guessed letters.
    * i.e.: if the word is BOOK, and the letter O has been guessed, this would return _ O O _
    */
   getWordHolderText() {
@@ -77,7 +77,7 @@ class Hangman {
   }
 
   /**
-   * This function returns a string of all the previous guesses, seperated by a comma
+   * This function returns a string of all the previous guesses, separated by a comma
    * This would return something that looks like
    * (Guesses: A, B, C)
    * Hint: use the Array.prototype.join method.

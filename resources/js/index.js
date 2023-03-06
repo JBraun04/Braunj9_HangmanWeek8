@@ -28,7 +28,7 @@ try {
   //       1. hide the startWrapper
   //       2. show the gameWrapper
   //       3. call the game getWordHolderText and set it to the wordHolderText
-  //       4. call the game getGuessessText and set it to the guessesText
+  //       4. call the game getGuessesText and set it to the guessesText
   difficultySelectForm.addEventListener(`submit`, function (event) {});
 
   // add a submit Event Listener to the guessForm
