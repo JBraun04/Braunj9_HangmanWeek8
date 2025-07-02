@@ -56,6 +56,12 @@ let game = null;
   // if the game is won or lost, show an alert.
   guessForm.addEventListener(`submit`, function (e) {});
 
+    const guess = guessInput.value;
+    game.guess();
+    game.getWordHolderText() = wordHolderText;
+    game.getGuessesText() = guessesText;
+    guessInput.value = "";
+
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
   //    hide the gameWrapper
