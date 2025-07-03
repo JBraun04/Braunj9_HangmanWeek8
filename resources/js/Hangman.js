@@ -32,11 +32,19 @@
    */
   start(difficulty, next) {
     // get word and set it to the class's this.word
+    this.getRandomWord(difficulty).then((word) => {
+    
     // clear canvas
     // draw base
     // reset this.guesses to empty array
+    this.clearCanvas();
+    this.drawBase();
+    this.guessList() = [];
     // reset this.isOver to false
     // reset this.didWin to false
+    this.isOver = false;
+    this.didWin = false;
+    });
   }
 
   /**
