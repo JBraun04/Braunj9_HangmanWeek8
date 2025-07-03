@@ -33,7 +33,6 @@ let game = null;
   difficultySelectForm.addEventListener(`submit`, function (event) {});
 
   const difficulty = difficultySelect.value;
-  game = new Hangman(word, canvas.getContext('2d'));
   game.Start();
 
   startWrapper.classList.add('hidden');
@@ -62,10 +61,26 @@ let game = null;
     game.getGuessesText() = guessesText;
     guessInput.value = "";
 
+    if (game.isOver() == true)
+      {
+        guessInput.enabled = false;
+        guessForm.querySelector('#guessSubmitButton').enabled = false;
+        resetGame.classList.remove('hidden');
+
+        if (game.didWin()) {
+      alert("You win!");
+    } else {
+      alert("You lost! Better luck next time.");
+    }
+  }
+
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
   //    hide the gameWrapper
-  resetGame.addEventListener(`click`, function (e) {});
+  resetGame.addEventListener(`click`, function (e) {
+    startWrapper.classList.remove('hidden');
+    gameWrapper.classList.remove('hidden');
+  });
 } catch (error) {
   console.error(error);
   alert(error);

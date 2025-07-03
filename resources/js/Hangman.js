@@ -1,4 +1,4 @@
-class Hangman {
+  class Hangman {
   constructor(_canvas) {
     if (!_canvas) {
       throw new Error(`invalid canvas provided`);
