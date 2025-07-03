@@ -106,10 +106,10 @@
     {
       return
     }
-      this.didWin = true;
-      this.isOver = true;
   }
     // if zero, set both didWin, and isOver to true
+    this.didWin = true;
+    this.isOver = true;
   }
 
   /**
@@ -117,7 +117,22 @@
    * drawHead, drawBody, drawRightArm, drawLeftArm, drawRightLeg, or drawLeftLeg.
    * if the number wrong guesses is 6, then also set isOver to true and didWin to false.
    */
-  onWrongGuess() {}
+  onWrongGuess() {
+
+    const wrongGuesses = this.guessList.filter((letter) => !this.word.includes(letter)).length;
+    if (wrongGuesses == 1) {this.drawHead();}
+    else if (wrongGuesses == 2) {this.drawBody();}
+    else if (wrongGuesses == 3) {this.drawRightArm();}
+    else if (wrongGuesses == 4) {this.drawLeftArm();}
+    else if (wrongGuesses == 5) {this.drawRightLeg();}
+    else if (wrongGuesses == 6) 
+    {
+      this.drawBody();
+      this.isOver  = true;
+      this.didWin = false;
+    }
+    
+  }
 
   /**
    * This function will return a string of the word placeholder
@@ -126,6 +141,7 @@
    */
   getWordHolderText() {
     return;
+    
   }
 
   /**
