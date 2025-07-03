@@ -60,7 +60,7 @@
       throw new error("No guess made. Please try again");
     }
     // Check for invalid cases (numbers, symbols, ...) throw an error if it is
-    else if (!validInputs.includes(letter))
+    else if(!validInputs.includes(letter))
     {
       throw new error("Letters allowed only. Please try again.")
     }
@@ -70,15 +70,32 @@
       throw new error("Please only guess one letter at a time. Try again.")
     }
     // if it's a letter, convert it to lower case for consistency.
-    else
+    else if(validInputs.includes(letter))
     {
       validGuess = letter.toLowerCase();
     }
     // check if this.guesses includes the letter. Throw an error if it has been guessed already.
+    else if(this.guessList.includes(letter))
+    {
+      throw new error("Letter has already been guessed. Please try again");
+    }
     // add the new letter to the guesses array.
+    else if(!this.guessList.includes(letter))
+    {
+      this.guessList.push(letter);
+    }
     // check if the word includes the guessed letter:
     //    if it's is call checkWin()
     //    if it's not call onWrongGuess()
+    if (this.word.includes(letter))
+    {
+      this.checkWin();
+    }
+    
+    else if(!this.word.includes(letter))
+    {
+      this.onWrongGuess();
+    }
   }
 
   checkWin() {
