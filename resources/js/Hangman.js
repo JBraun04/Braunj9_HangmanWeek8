@@ -52,10 +52,28 @@
    * @param {string} letter the guessed letter.
    */
   guess(letter) {
+    const validInputs = "abcdefghijklmnopqrstuvwxyz";
+    const validGuess = "";
     // Check if nothing was provided and throw an error if so
+    if(letter == null)
+    {
+      throw new error("No guess made. Please try again");
+    }
     // Check for invalid cases (numbers, symbols, ...) throw an error if it is
+    else if (!validInputs.includes(letter))
+    {
+      throw new error("Letters allowed only. Please try again.")
+    }
     // Check if more than one letter was provided. throw an error if it is.
+    else if(!letter.length == 1)
+    {
+      throw new error("Please only guess one letter at a time. Try again.")
+    }
     // if it's a letter, convert it to lower case for consistency.
+    else
+    {
+      validGuess = letter.toLowerCase();
+    }
     // check if this.guesses includes the letter. Throw an error if it has been guessed already.
     // add the new letter to the guesses array.
     // check if the word includes the guessed letter:
