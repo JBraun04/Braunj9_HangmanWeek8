@@ -140,8 +140,18 @@
    * i.e.: if the word is BOOK, and the letter O has been guessed, this would return _ O O _
    */
   getWordHolderText() {
-    return;
-    
+    return this.word.split('').map((letter) => 
+    {
+      if(this.guessList.includes(letter))
+      {
+        return letter;
+      }
+      else
+      {
+        return '_';
+      }
+    })
+    .join(' ');
   }
 
   /**
@@ -151,7 +161,7 @@
    * Hint: use the Array.prototype.join method.
    */
   getGuessesText() {
-    return ``;
+    return `Guesses: ` + this.guessList.join(', ');
   }
 
   /**
