@@ -100,6 +100,15 @@
 
   checkWin() {
     // using the word and the guesses array, figure out how many remaining unknowns.
+    for (let i = 0; i < this.word.length; i++){
+      letter = this.word[i];
+    if (!this.guessList.includes(letter))
+    {
+      return
+    }
+      this.didWin = true;
+      this.isOver = true;
+  }
     // if zero, set both didWin, and isOver to true
   }
 
