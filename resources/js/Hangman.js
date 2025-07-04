@@ -126,12 +126,12 @@
     const wrongGuesses = this.guessList.filter((letter) => !this.word.includes(letter)).length;
     if (wrongGuesses == 1) {this.drawHead();}
     else if (wrongGuesses == 2) {this.drawBody();}
-    else if (wrongGuesses == 3) {this.drawRightArm();}
-    else if (wrongGuesses == 4) {this.drawLeftArm();}
-    else if (wrongGuesses == 5) {this.drawRightLeg();}
+    else if (wrongGuesses == 3) {this.drawLeftArm();}
+    else if (wrongGuesses == 4) {this.drawRightArm();}
+    else if (wrongGuesses == 5) {this.drawLeftLeg();}
     else if (wrongGuesses == 6) 
     {
-      this.drawBody();
+      this.drawRightLeg();
       this.isOver  = true;
       this.didWin = false;
     }
@@ -187,17 +187,44 @@
 
   drawHead() {
     this.ctx.beginPath();
-    this.ctx.arc(200, 200, 150, 0, 2 * Math.PI); // Full circle
+    this.ctx.arc(250, 90, 30, 0, 2 * Math.PI); // Full circle
+    this.ctx.lineWidth = 10;
     this.ctx.stroke();
   }
 
-  drawBody() {}
+  drawBody() {
+    this.ctx.fillRect(245, 120, 10, 110);
+  }
 
-  drawLeftArm() {}
+  drawLeftArm() {
+    this.ctx.beginPath();
+    this.ctx.lineWidth = 10;
+    this.ctx.moveTo(250, 140);
+    this.ctx.lineTo(220, 170);
+    this.ctx.stroke();
+  }
 
-  drawRightArm() {}
+  drawRightArm() {
+    this.ctx.beginPath();
+    this.ctx.lineWidth = 10;
+    this.ctx.moveTo(250, 140);
+    this.ctx.lineTo(280, 170);
+    this.ctx.stroke();
+  }
 
-  drawLeftLeg() {}
+  drawLeftLeg() {
+    this.ctx.beginPath();
+    this.ctx.lineWidth = 10;
+    this.ctx.moveTo(250, 230);
+    this.ctx.lineTo(220, 260);
+    this.ctx.stroke();
+  }
 
-  drawRightLeg() {}
+  drawRightLeg() {
+    this.ctx.beginPath();
+    this.ctx.lineWidth = 10;
+    this.ctx.moveTo(250, 230);
+    this.ctx.lineTo(280, 260);
+    this.ctx.stroke();
+  }
 }

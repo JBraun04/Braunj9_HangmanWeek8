@@ -30,15 +30,16 @@ let game = new Hangman(canvas);
   //       2. show the gameWrapper
   //       3. call the game getWordHolderText and set it to the wordHolderText
   //       4. call the game getGuessesText and set it to the guessesText
-  difficultySelectForm.addEventListener(`submit`, function (event) {});
-
-  const difficulty = difficultySelect.value;
+  difficultySelectForm.addEventListener(`submit`, function (event) {
+    event.preventDefault();
+    const difficulty = difficultySelect.value;
   game.start();
 
   startWrapper.classList.add('hidden');
   gameWrapper.classList.remove('hidden');
-  game.getWordHolderText() = wordHolderText;
-  game.getGuessesText() = guessesText;
+  wordHolderText.textContent = game.getWordHolderText();
+  guessesText.textContent = game.getGuessesText();
+  });
 
   // add a submit Event Listener to the guessForm
   //    get the guess input
@@ -53,18 +54,18 @@ let game = new Hangman(canvas);
   //      2. disable the guessButton
   //      3. show the resetGame button
   // if the game is won or lost, show an alert.
-  guessForm.addEventListener(`submit`, function (e) {});
-
+  guessForm.addEventListener(`submit`, function (e) {
+    event.preventDefault();
     const guess = guessInput.value;
-    game.guess();
+    game.guess(guess);
     wordHolderText.textContent = game.getWordHolderText();
     guessesText.textContent = game.getGuessesText();
     guessInput.value = "";
 
-    if (game.isOver() == true)
+    if (game.isOver == true)
       {
         guessInput.enabled = false;
-        guessForm.querySelector('#guessSubmitButton').enabled = false;
+        guessForm.querySelector('#guessSubmitButton').disabled = true;
         resetGame.classList.remove('hidden');
 
         if (game.didWin()) {
@@ -73,6 +74,7 @@ let game = new Hangman(canvas);
       alert("You lost! Better luck next time.");
     }
   }
+  });
 
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
