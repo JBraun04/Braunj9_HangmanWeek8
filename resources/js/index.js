@@ -33,7 +33,7 @@ let game = new Hangman(canvas);
   difficultySelectForm.addEventListener(`submit`, function (event) {
     event.preventDefault();
     const difficulty = difficultySelect.value;
-  game.start();
+  game.start(difficulty);
 
   startWrapper.classList.add('hidden');
   gameWrapper.classList.remove('hidden');
@@ -68,7 +68,7 @@ let game = new Hangman(canvas);
         guessForm.querySelector('#guessSubmitButton').disabled = true;
         resetGame.classList.remove('hidden');
 
-        if (game.didWin()) {
+        if (game.didWin == true) {
       alert("You win!");
     } else {
       alert("You lost! Better luck next time.");
@@ -81,7 +81,7 @@ let game = new Hangman(canvas);
   //    hide the gameWrapper
   resetGame.addEventListener(`click`, function (e) {
     startWrapper.classList.remove('hidden');
-    gameWrapper.classList.remove('hidden');
+    gameWrapper.classList.add('hidden');
   });
 } catch (error) {
   console.error(error);
