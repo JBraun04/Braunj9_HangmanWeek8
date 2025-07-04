@@ -3,7 +3,8 @@
     if (!_canvas) {
       throw new Error(`invalid canvas provided`);
     }
-
+    this.word = '';
+    this.guessList = [];
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext(`2d`);
   }
@@ -18,6 +19,7 @@
    *    { word: "book" }
    * */
   getRandomWord(difficulty) {
+
     return fetch(
       `https://it3049c-hangman.fly.dev?difficulty=${difficulty}`
     )
@@ -33,13 +35,13 @@
   start(difficulty, next) {
     // get word and set it to the class's this.word
     this.getRandomWord(difficulty).then((word) => {
-    
+    this.word = word;
     // clear canvas
     // draw base
     // reset this.guesses to empty array
     this.clearCanvas();
     this.drawBase();
-    this.guessList() = [];
+    this.guessList = [];
     // reset this.isOver to false
     // reset this.didWin to false
     this.isOver = false;
@@ -52,35 +54,37 @@
    * @param {string} letter the guessed letter.
    */
   guess(letter) {
-    const validInputs = "abcdefghijklmnopqrstuvwxyz";
-    const validGuess = "";
+    const validInputs = "abcdefghijklmnopqrstuvwxyz"; 
     // Check if nothing was provided and throw an error if so
     if(letter == null)
     {
-      throw new error("No guess made. Please try again");
+      throw new Error("No guess made. Please try again");
     }
+
+    letter = letter.toLowerCase();
+
     // Check for invalid cases (numbers, symbols, ...) throw an error if it is
-    else if(!validInputs.includes(letter))
+    if(!validInputs.includes(letter))
     {
-      throw new error("Letters allowed only. Please try again.")
+      throw new Error("Letters allowed only. Please try again.")
     }
     // Check if more than one letter was provided. throw an error if it is.
-    else if(!letter.length == 1)
+    if(letter.length !== 1)
     {
-      throw new error("Please only guess one letter at a time. Try again.")
+      throw new Error("Please only guess one letter at a time. Try again.")
     }
     // if it's a letter, convert it to lower case for consistency.
-    else if(validInputs.includes(letter))
+    if(validInputs.includes(letter))
     {
-      validGuess = letter.toLowerCase();
+      letter = letter.toLowerCase();
     }
     // check if this.guesses includes the letter. Throw an error if it has been guessed already.
-    else if(this.guessList.includes(letter))
+    if(this.guessList.includes(letter))
     {
-      throw new error("Letter has already been guessed. Please try again");
+      throw new Error("Letter has already been guessed. Please try again");
     }
     // add the new letter to the guesses array.
-    else if(!this.guessList.includes(letter))
+    if(!this.guessList.includes(letter))
     {
       this.guessList.push(letter);
     }
@@ -101,8 +105,8 @@
   checkWin() {
     // using the word and the guesses array, figure out how many remaining unknowns.
     for (let i = 0; i < this.word.length; i++){
-      letter = this.word[i];
-    if (!this.guessList.includes(letter))
+      let ltr = this.word[i];
+    if (!this.guessList.includes(ltr))
     {
       return
     }
@@ -181,7 +185,11 @@
     this.ctx.fillRect(10, 410, 175, 10); // Base
   }
 
-  drawHead() {}
+  drawHead() {
+    this.ctx.beginPath();
+    this.ctx.arc(200, 200, 150, 0, 2 * Math.PI); // Full circle
+    this.ctx.stroke();
+  }
 
   drawBody() {}
 
