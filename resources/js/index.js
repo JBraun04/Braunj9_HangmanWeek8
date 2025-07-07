@@ -55,8 +55,9 @@ let game = new Hangman(canvas);
   //      3. show the resetGame button
   // if the game is won or lost, show an alert.
   guessForm.addEventListener(`submit`, function (e) {
-    event.preventDefault();
+    e.preventDefault();
     const guess = guessInput.value;
+    try{
     game.guess(guess);
     wordHolderText.textContent = game.getWordHolderText();
     guessesText.textContent = game.getGuessesText();
@@ -74,6 +75,9 @@ let game = new Hangman(canvas);
       alert("You lost! Better luck next time.");
     }
   }
+}catch(error){
+  alert(error.message);
+}
   });
 
   // add a click Event Listener to the resetGame button
